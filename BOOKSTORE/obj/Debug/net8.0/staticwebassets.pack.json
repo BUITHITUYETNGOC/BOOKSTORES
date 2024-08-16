@@ -5,6 +5,110 @@
       "PackagePath": "staticwebassets\\BOOKSTORE.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\NV_Naruto.jpg",
+      "PackagePath": "staticwebassets\\Picture\\NV_Naruto.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\anh1.jpg",
+      "PackagePath": "staticwebassets\\Picture\\anh1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\anh2.jpg",
+      "PackagePath": "staticwebassets\\Picture\\anh2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\anh3.jpg",
+      "PackagePath": "staticwebassets\\Picture\\anh3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\anh4.jpg",
+      "PackagePath": "staticwebassets\\Picture\\anh4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\biahome.png",
+      "PackagePath": "staticwebassets\\Picture\\biahome.png"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\biancuadaolon.jpg",
+      "PackagePath": "staticwebassets\\Picture\\biancuadaolon.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\caykhe.jpg",
+      "PackagePath": "staticwebassets\\Picture\\caykhe.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\chuot.jpg",
+      "PackagePath": "staticwebassets\\Picture\\chuot.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\cun.jpg",
+      "PackagePath": "staticwebassets\\Picture\\cun.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\demen.jpg",
+      "PackagePath": "staticwebassets\\Picture\\demen.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\gianghococongionho.jpg",
+      "PackagePath": "staticwebassets\\Picture\\gianghococongionho.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\harry1.jpg",
+      "PackagePath": "staticwebassets\\Picture\\harry1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\harry2.jpg",
+      "PackagePath": "staticwebassets\\Picture\\harry2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\harry3.jpg",
+      "PackagePath": "staticwebassets\\Picture\\harry3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\harry4.jpg",
+      "PackagePath": "staticwebassets\\Picture\\harry4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\haynhotenanhay.jpg",
+      "PackagePath": "staticwebassets\\Picture\\haynhotenanhay.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\hoangtube.jpg",
+      "PackagePath": "staticwebassets\\Picture\\hoangtube.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\lienhoayeucot.jpg",
+      "PackagePath": "staticwebassets\\Picture\\lienhoayeucot.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\meo.png",
+      "PackagePath": "staticwebassets\\Picture\\meo.png"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\nguyenvongcuoicung.jpg",
+      "PackagePath": "staticwebassets\\Picture\\nguyenvongcuoicung.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\noigioivangoaigioi.jpg",
+      "PackagePath": "staticwebassets\\Picture\\noigioivangoaigioi.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\soc.jpg",
+      "PackagePath": "staticwebassets\\Picture\\soc.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\sodua.jpg",
+      "PackagePath": "staticwebassets\\Picture\\sodua.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\starrynight.jpg",
+      "PackagePath": "staticwebassets\\Picture\\starrynight.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\Picture\\thelittleprince.jpg",
+      "PackagePath": "staticwebassets\\Picture\\thelittleprince.jpg"
+    },
+    {
       "Id": "C:\\Users\\ASUS\\Desktop\\BOOKSTORE\\BOOKSTORE\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
