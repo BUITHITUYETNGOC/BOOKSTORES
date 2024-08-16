@@ -1,0 +1,48 @@
+# Ignore Visual Studio temporary files, build results, and
+# some common configuration files
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.csproj.user
+*.dll
+*.exe
+*.pdb
+*.log
+*.vscode/
+*.vscode/settings.json
+*.vscode/tasks.json
+*.vscode/launch.json
+*.vscode/extensions.json
+*.dtbcache.v2
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Npm/Yarn files
+node_modules/
+yarn.lock
+package-lock.json
+
+# Log files
+*.log
+
+# User-specific files
+*.rsuser
+*.sln.ide
+
+# Database files
+*.mdf
+*.ldf
