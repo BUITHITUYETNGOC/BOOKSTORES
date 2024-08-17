@@ -7,8 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BOOKSTORE.Data;
 
-namespace BOOKSTORE.Controllers
+namespace BOOKSTORE.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class ProductsController : Controller
     {
         private readonly QlbhContext _context;
@@ -17,15 +18,16 @@ namespace BOOKSTORE.Controllers
         {
             _context = context;
         }
-
-        // GET: Products
+        [Route("Admin/Products/")]
+        [Route("Admin/Products/index")]
+        // GET: Admin/Products
         public async Task<IActionResult> Index()
         {
             var qlbhContext = _context.Products.Include(p => p.Category).Include(p => p.Supplier);
             return View(await qlbhContext.ToListAsync());
         }
 
-        // GET: Products/Details/5
+        // GET: Admin/Products/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -45,7 +47,7 @@ namespace BOOKSTORE.Controllers
             return View(product);
         }
 
-        // GET: Products/Create
+        // GET: Admin/Products/Create
         public IActionResult Create()
         {
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id");
@@ -53,7 +55,7 @@ namespace BOOKSTORE.Controllers
             return View();
         }
 
-        // POST: Products/Create
+        // POST: Admin/Products/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -70,8 +72,8 @@ namespace BOOKSTORE.Controllers
             ViewData["SupplierId"] = new SelectList(_context.Suppliers, "Id", "Id", product.SupplierId);
             return View(product);
         }
-
-        // GET: Products/Edit/5
+        
+        // GET: Admin/Products/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -89,7 +91,7 @@ namespace BOOKSTORE.Controllers
             return View(product);
         }
 
-        // POST: Products/Edit/5
+        // POST: Admin/Products/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -126,7 +128,7 @@ namespace BOOKSTORE.Controllers
             return View(product);
         }
 
-        // GET: Products/Delete/5
+        // GET: Admin/Products/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -146,7 +148,7 @@ namespace BOOKSTORE.Controllers
             return View(product);
         }
 
-        // POST: Products/Delete/5
+        // POST: Admin/Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
