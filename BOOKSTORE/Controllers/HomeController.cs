@@ -26,6 +26,14 @@ namespace BOOKSTORE.Controllers
         {
             return View();
         }
+        public IActionResult AboutApp()
+        {
+            return View();
+        }
+        public IActionResult AboutTeam()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

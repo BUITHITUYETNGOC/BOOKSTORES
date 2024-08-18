@@ -7,15 +7,15 @@ namespace BOOKSTORE.Data;
 public partial class Product
 {
     [Display(Name="Mã sản phẩm")]
-    [Required]
+    [Required,MinLength(4, ErrorMessage = "Yêu cầu nhập mã sản phẩm")]
     public string Id { get; set; } = null!;
 
     [Display(Name = "Tên sản phẩm")]
-    [Required]
+    [Required, MinLength(4, ErrorMessage = "Yêu cầu nhập tên sản phẩm")]
     public string? Name { get; set; }
 
     [Display(Name = "Giá bán")]
-    [Required]
+    [Required, MinLength(4, ErrorMessage = "Yêu cầu nhập giá bán")]
     public double? UnitPrice { get; set; }
 
     [Display(Name = "Thể loại")]

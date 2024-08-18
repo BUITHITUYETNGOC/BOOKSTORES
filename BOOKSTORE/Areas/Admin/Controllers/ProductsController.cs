@@ -48,9 +48,10 @@ namespace BOOKSTORE.Areas.Admin.Controllers
         }
 
         // GET: Admin/Products/Create
+        [Route("Admin/Products/Create")]
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id");
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name");
             ViewData["SupplierId"] = new SelectList(_context.Suppliers, "Id", "Id");
             return View();
         }
@@ -60,20 +61,23 @@ namespace BOOKSTORE.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("Admin/Products/Create")]
         public async Task<IActionResult> Create([Bind("Id,Name,UnitPrice,CategoryId,SupplierId,Sl,Description,Author,Status,UpdateLast,Image")] Product product)
         {
             if (ModelState.IsValid)
             {
+                product.UpdateLast = DateTime.Now;
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", product.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
             ViewData["SupplierId"] = new SelectList(_context.Suppliers, "Id", "Id", product.SupplierId);
             return View(product);
         }
-        
+
         // GET: Admin/Products/Edit/5
+        [Route("Admin/Products/Edit")]
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -86,7 +90,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", product.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
             ViewData["SupplierId"] = new SelectList(_context.Suppliers, "Id", "Id", product.SupplierId);
             return View(product);
         }
@@ -123,12 +127,13 @@ namespace BOOKSTORE.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", product.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
             ViewData["SupplierId"] = new SelectList(_context.Suppliers, "Id", "Id", product.SupplierId);
             return View(product);
         }
 
         // GET: Admin/Products/Delete/5
+        [Route("Admin/Products/Delete")]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)

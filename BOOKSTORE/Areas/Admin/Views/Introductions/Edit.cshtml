@@ -1,0 +1,56 @@
+﻿@model BOOKSTORE.Data.Introduction
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Sửa</h1>
+
+<h4>Thông tin giới thiệu cửa hàng</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="FirstImage" class="control-label"></label>
+                <input type="file" asp-for="FirstImage" class="form-control" />
+                <span asp-validation-for="FirstImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeftImage" class="control-label"></label>
+                <input type="file" asp-for="LeftImage" class="form-control" />
+                <span asp-validation-for="LeftImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdateLast" class="control-label"></label>
+                <input type="date" asp-for="UpdateLast" class="form-control" />
+                <span asp-validation-for="UpdateLast" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Quay lại</a>
+</div>
+

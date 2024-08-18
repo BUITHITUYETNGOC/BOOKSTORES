@@ -1,12 +1,9 @@
-﻿@model IEnumerable<BOOKSTORE.Data.Product>
-
+﻿@model IEnumerable<BOOKSTORE.Data.Introduction>
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>QL Sản phẩm</h1>
+<h1>QL Giới thiệu</h1>
 <style>
     table {
         width: 100%;
@@ -28,7 +25,6 @@
         background: #333;
         color: #fff;
     }
-    
 </style>
 <p>
     <a asp-action="Create">Thêm mới</a>
@@ -37,26 +33,23 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Image)
+                @Html.DisplayNameFor(model => model.FirstImage)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.LeftImage)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Sl)
+                @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Author)
+                @Html.DisplayNameFor(model => model.Address)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Supplier)
+                @Html.DisplayNameFor(model => model.Phone)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UnitPrice)
+                @Html.DisplayNameFor(model => model.UpdateLast)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-           </th>
             <th></th>
         </tr>
     </thead>
@@ -64,27 +57,23 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                <img src="~/Picture/@item.Image" width="100" />
+                @Html.DisplayFor(modelItem => item.FirstImage)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>           
-            <td>
-                @Html.DisplayFor(modelItem => item.Sl)
-            </td>           
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
+                @Html.DisplayFor(modelItem => item.LeftImage)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Supplier)
-            </td>                      
-            <td>
-                @Html.DisplayFor(modelItem => item.UnitPrice)
+                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Status)
+                @Html.DisplayFor(modelItem => item.Address)
             </td>
-           
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdateLast)
+            </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Sửa</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Chi tiết</a> |

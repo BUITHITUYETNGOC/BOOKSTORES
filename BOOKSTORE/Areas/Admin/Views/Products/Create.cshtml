@@ -1,16 +1,17 @@
 ﻿@model BOOKSTORE.Data.Product
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Thêm sản phẩm</h1>
 
-<h4>Product</h4>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Id" class="control-label"></label>
@@ -29,11 +30,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
+                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId">
+                    <option>Chọn thể loại</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="SupplierId" class="control-label"></label>
-                <select asp-for="SupplierId" class ="form-control" asp-items="ViewBag.SupplierId"></select>
+                <select asp-for="SupplierId" class ="form-control" asp-items="ViewBag.SupplierId">
+                    <option>Chọn mã nhà cung cấp</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="Sl" class="control-label"></label>
@@ -42,7 +47,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
+                <textarea asp-for="Description" class="form-control"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -56,13 +61,13 @@
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UpdateLast" class="control-label"></label>
-                <input asp-for="UpdateLast" class="form-control" />
+                <label asp-for="UpdateLast" class="control-label">Ngày thực hiện</label>
+                <input type="date" asp-for="UpdateLast" class="form-control" />
                 <span asp-validation-for="UpdateLast" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
+                <label asp-for="Image" class="control-label">Ảnh</label>
+                <input type="file" asp-for="Image" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
             <div class="form-group">
