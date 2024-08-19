@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿﻿
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -65,7 +66,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="~/Admin/Customers"  class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                <a href="~/Admin/Customers" class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Khách hàng</span>
@@ -161,35 +162,34 @@
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                          
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
-                </nav>
 
-                <!-- End of Topbar -->
-                <!-- Begin Page Content -->
-                
-                <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Liên hệ hỗ trợ: 1900 1234</span>
-                        </div>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                            </a>
+            </div>
+            </li>
+            </nav>
+
+            <!-- End of Topbar -->
+            <!-- Begin Page Content -->
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Liên hệ hỗ trợ: 1900 1234</span>
                     </div>
-                </footer>
-                <!-- End of Footer -->
-                <!-- Bootstrap core JavaScript-->
-                <script src="vendor/jquery/jquery.min.js"></script>
-                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+                </div>
+            </footer>
+            <!-- End of Footer -->
+            <!-- Bootstrap core JavaScript-->
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            @await RenderSectionAsync("Scripts", required:false)
+            
             <div class="content-wrapper">
                 @RenderBody()
             </div>
-
 </body>
 
 </html>

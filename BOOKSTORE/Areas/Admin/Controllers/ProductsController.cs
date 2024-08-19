@@ -23,8 +23,8 @@ namespace BOOKSTORE.Areas.Admin.Controllers
         // GET: Admin/Products
         public async Task<IActionResult> Index()
         {
-            var qlbhContext = _context.Products.Include(p => p.Category).Include(p => p.Supplier);
-            return View(await qlbhContext.ToListAsync());
+            var qlProducts = _context.Products.Include(p => p.Category).Include(p => p.Supplier);
+            return View(await qlProducts.ToListAsync());
         }
 
         // GET: Admin/Products/Details/5
@@ -62,19 +62,54 @@ namespace BOOKSTORE.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Admin/Products/Create")]
-        public async Task<IActionResult> Create([Bind("Id,Name,UnitPrice,CategoryId,SupplierId,Sl,Description,Author,Status,UpdateLast,Image")] Product product)
+        public async Task<IActionResult> Create(Product product)
         {
-            if (ModelState.IsValid)
-            {
-                product.UpdateLast = DateTime.Now;
-                _context.Add(product);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+            // Load lại danh sách Category và Supplier để hiển thị trong view nếu cần nhập lại thông tin
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
             ViewData["SupplierId"] = new SelectList(_context.Suppliers, "Id", "Id", product.SupplierId);
+
+            // Kiểm tra tính hợp lệ của Model
+            if (ModelState.IsValid)
+            {
+                // Chuyển đổi tên sản phẩm thành dạng không có dấu cách (slug)
+                product.Name = product.Name.Replace(" ", "_");
+                // Kiểm tra sản phẩm đã tồn tại trong database chưa
+                var Slug = await _context.Products.FirstOrDefaultAsync(p => p.Name == product.Name);
+
+                // Nếu sản phẩm đã tồn tại, thông báo lỗi
+                if (Slug != null)
+                {
+                    ModelState.AddModelError("", "Sản Phẩm Đã Có Trong Database");
+                    return View(product);
+                }
+                else
+                {
+                    // Nếu sản phẩm chưa tồn tại, tiếp tục xử lý
+                    try
+                    {
+                        // Thêm sản phẩm mới vào database
+                        _context.Add(product);
+                        await _context.SaveChangesAsync();
+
+                        // Chuyển hướng đến trang index hoặc trang quản lý sản phẩm sau khi thêm thành công
+                        return RedirectToAction("Index", "Products");
+                    }
+                    catch (Exception ex)
+                    {
+                        // Nếu có lỗi trong quá trình thêm dữ liệu, lưu thông tin lỗi trong TempData và trả về view
+                        TempData["error"] = $"Có lỗi xảy ra: {ex.Message}";
+                    }
+                }
+            }
+            else
+            {
+                TempData["error"] = "Model có lỗi";
+            }
+
+            // Nếu model không hợp lệ hoặc có lỗi, trả về view để người dùng sửa
             return View(product);
         }
+
 
         // GET: Admin/Products/Edit/5
         [Route("Admin/Products/Edit")]
