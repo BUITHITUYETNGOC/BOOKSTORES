@@ -1,4 +1,4 @@
-using BOOKSTORE.Data;
+﻿using BOOKSTORE.Data;
 using BOOKSTORE.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,12 +14,29 @@ namespace BOOKSTORE.Controllers
         public HomeController(ILogger<HomeController> logger, QlbhContext context)
         {
             _logger = logger;
-
+            _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string? categoryId)
         {
-            return View();
+            var products = _context.Products
+                .Include(p => p.Category)
+                .AsQueryable();
+
+            if (categoryId == null) 
+            {
+                products = products.Where(p => p.CategoryId == categoryId);
+            }
+
+            var categories = _context.Categories.ToList(); // Lấy danh sách các danh mục
+
+            var viewModel = new HomeViewModel
+            {
+                Products = products.ToList(),
+                Categories = categories
+            };
+
+            return View(viewModel);
         }
 
         public IActionResult Privacy()

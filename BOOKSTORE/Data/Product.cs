@@ -11,7 +11,7 @@ public partial class Product
     public string Id { get; set; } = null!;
 
     [Display(Name = "Tên sản phẩm")]
-    [Required, ]
+    [Required]
     public string? Name { get; set; }
 
     [Display(Name = "Giá bán")]

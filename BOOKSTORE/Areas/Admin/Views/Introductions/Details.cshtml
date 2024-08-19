@@ -2,6 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Details";
+    Layout = null;
 }
 
 <h1>Details</h1>
@@ -49,6 +50,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Sửa</a> |
+    <a asp-action="Index">Quay lại</a>
 </div>

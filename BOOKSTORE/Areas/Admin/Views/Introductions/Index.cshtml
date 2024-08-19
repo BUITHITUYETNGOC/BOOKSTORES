@@ -2,6 +2,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Index";
+    Layout = null;
 }
 <h1>QL Giới thiệu</h1>
 <style>
@@ -57,10 +58,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FirstImage)
+               <img src="~/Picture/@item.FirstImage" width="100" />
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LeftImage)
+                <img src="~/Picture/@item.LeftImage" width="100" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)

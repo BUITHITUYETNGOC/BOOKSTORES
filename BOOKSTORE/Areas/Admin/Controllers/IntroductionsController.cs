@@ -28,7 +28,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
         }
 
         // GET: Admin/Introductions/Details/5
-        [Route("Admin/Introductions/details")]
+        [Route("Admin/Introductions/Details")]
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -47,7 +47,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
         }
 
         // GET: Admin/Introductions/Create
-        [Route("Admin/Introductions/create")]
+        [Route("Admin/Introductions/Create")]
         public IActionResult Create()
         {
             return View();
@@ -58,7 +58,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        
+        [Route("Admin/Introductions/Create")]
         public async Task<IActionResult> Create([Bind("Id,FirstImage,LeftImage,Description,Address,Phone,UpdateLast")] Introduction introduction)
         {
             if (ModelState.IsValid)
@@ -71,7 +71,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
         }
 
         // GET: Admin/Introductions/Edit/5
-        [Route("Admin/Introductions/edit")]
+        [Route("Admin/Introductions/Edit")]
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -92,6 +92,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("Admin/Introductions/Edit")]
         public async Task<IActionResult> Edit(string id, [Bind("Id,FirstImage,LeftImage,Description,Address,Phone,UpdateLast")] Introduction introduction)
         {
             if (id != introduction.Id)
@@ -123,7 +124,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
         }
 
         // GET: Admin/Introductions/Delete/5
-        [Route("Admin/Introductions/delete")]
+        [Route("Admin/Introductions/Delete")]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -144,6 +145,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
         // POST: Admin/Introductions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Route("Admin/Introductions/Delete")]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var introduction = await _context.Introductions.FindAsync(id);

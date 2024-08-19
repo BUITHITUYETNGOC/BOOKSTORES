@@ -105,7 +105,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
             {
                 TempData["error"] = "Model có lỗi";
             }
-
+            
             // Nếu model không hợp lệ hoặc có lỗi, trả về view để người dùng sửa
             return View(product);
         }
@@ -135,6 +135,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("Admin/Products/Edit")]
         public async Task<IActionResult> Edit(string id, [Bind("Id,Name,UnitPrice,CategoryId,SupplierId,Sl,Description,Author,Status,UpdateLast,Image")] Product product)
         {
             if (id != product.Id)
@@ -191,6 +192,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
         // POST: Admin/Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Route("Admin/Products/Edit")]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var product = await _context.Products.FindAsync(id);
