@@ -11,7 +11,7 @@ public partial class Product
     public string Id { get; set; } = null!;
 
     [Display(Name = "Tên sản phẩm")]
-    [Required, ]
+    [MinLength(5, ErrorMessage = "Nhập Ít Nhất 5 kí tự")]
     public string? Name { get; set; }
 
     [Display(Name = "Giá bán")]

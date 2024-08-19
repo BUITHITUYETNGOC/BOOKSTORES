@@ -71,10 +71,9 @@ namespace BOOKSTORE.Areas.Admin.Controllers
             // Kiểm tra tính hợp lệ của Model
             if (ModelState.IsValid)
             {
-                // Chuyển đổi tên sản phẩm thành dạng không có dấu cách (slug)
-                product.Name = product.Name.Replace(" ", "_");
+                
                 // Kiểm tra sản phẩm đã tồn tại trong database chưa
-                var Slug = await _context.Products.FirstOrDefaultAsync(p => p.Name == product.Name);
+                var Slug = await _context.Products.FirstOrDefaultAsync(p => p.Id == product.Id);
 
                 // Nếu sản phẩm đã tồn tại, thông báo lỗi
                 if (Slug != null)

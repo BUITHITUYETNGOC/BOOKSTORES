@@ -11,11 +11,13 @@ public class AccountController : Controller
     public AccountController(QlbhContext context)
     {
         _context = context;
+
     }
 
     // Register page
     public IActionResult Register()
     {
+      
         return View();
     }
 
@@ -44,6 +46,7 @@ public class AccountController : Controller
     // Login page
     public IActionResult Login()
     {
+        
         return View();
     }
 
@@ -66,6 +69,7 @@ public class AccountController : Controller
     [HttpGet]
     public IActionResult Index()
     {
+        
         return View();
     }
 }
