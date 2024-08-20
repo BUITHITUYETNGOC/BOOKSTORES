@@ -19,29 +19,22 @@ namespace BOOKSTORE.Controllers
 
         public IActionResult Index(string? categoryId)
         {
-            var products = _context.Products
-                .Include(p => p.Category)
-                .AsQueryable();
+            var products = _context.Products.AsQueryable();
 
-            if (categoryId == null) 
+            if (!string.IsNullOrEmpty(categoryId))
             {
                 products = products.Where(p => p.CategoryId == categoryId);
             }
 
-            var categories = _context.Categories.ToList(); // Lấy danh sách các danh mục
+            var productList = products.ToList(); //lấy danh sách sản phẩm
 
-            var viewModel = new HomeViewModel
-            {
-                Products = products.ToList(),
-                Categories = categories
-            };
-
-            return View(viewModel);
+            return View(productList);
         }
 
         public IActionResult AboutApp()
         {
-            return View();
+            var introduction = _context.Introductions.AsQueryable();
+            return View(introduction);
         }
         public IActionResult AboutTeam()
         {

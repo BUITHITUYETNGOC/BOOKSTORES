@@ -28,6 +28,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
         }
 
         // GET: Admin/Products/Details/5
+        [Route("Admin/Products/Details/5")]
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -111,7 +112,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
 
 
         // GET: Admin/Products/Edit/5
-        [Route("Admin/Products/Edit")]
+        [Route("Admin/Products/Edit/5")]
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -134,7 +135,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("Admin/Products/Edit")]
+        [Route("Admin/Products/Edit/5")]
         public async Task<IActionResult> Edit(string id, [Bind("Id,Name,UnitPrice,CategoryId,SupplierId,Sl,Description,Author,Status,UpdateLast,Image")] Product product)
         {
             if (id != product.Id)
@@ -168,7 +169,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
         }
 
         // GET: Admin/Products/Delete/5
-        [Route("Admin/Products/Delete")]
+        [Route("Admin/Products/Delete/5")]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -191,7 +192,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
         // POST: Admin/Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Route("Admin/Products/Edit")]
+        [Route("Admin/Products/Delete/5")]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var product = await _context.Products.FindAsync(id);

@@ -1,8 +1,8 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Trang chủ";
 }
 
-
+@model IEnumerable<BOOKSTORE.Data.Product>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,22 +51,18 @@
     <!--Thể Loại-->
     <main role="main" class="pb-3">
         <div class="w3-padding-60 w3-large w3-text-grey" style="font-weight:bold; margin-top:90px">
-            
-            @foreach (var category in Model.Categories)
-            {
-                <a href="@Url.Action("Index", new { categoryId = category.Id })" class="w3-bar-item w3-button">@category.Name</a>
-            }
-        </div>
-
-        @foreach (var product in Model.Products)
-        {
-            // Hiển thị thông tin sản phẩm
-        }
+            <a class="w3-button w3-yellow" asp-action="Index" asp-route-categoryId="KD">Kinh dị</a>
+            <a class="w3-button w3-orange" asp-action="Index" asp-route-categoryId="KH">Khoa học</a>
+            <a class="w3-button w3-pink" asp-action="Index" asp-route-categoryId="NA">Nấu ăn</a>
+            <a class="w3-button w3-green" asp-action="Index" asp-route-categoryId="TN">Thiếu nhi</a>
+            <a class="w3-button w3-blue" asp-action="Index" asp-route-categoryId="TT">Truyện tranh</a>
+            <a class="w3-button w3-yellow" asp-action="Index" asp-route-categoryId="TTH">Trinh thám</a>
+            <a class="w3-button w3-orange" asp-action="Index" asp-route-categoryId="TTT">Tiểu thuyết</a>
         </div>
 
 
-        <div class="main" style="margin-top: 120px">
-            <div class="w3-content w3-display-container" style="max-width:800px">
+        <div class="main" style="margin-top: 100px">
+            <div class="w3-content w3-display-container" style="max-width: 768px">
                 <img class="mySlides" src="/picture/anh1.jpg" alt="Slide 1" style="width:100%">
                 <img class="mySlides" src="/picture/anh2.jpg" alt="Slide 2" style="width:100%">
                 <img class="mySlides" src="/picture/anh3.jpg" alt="Slide 3" style="width:100%">
@@ -81,9 +77,33 @@
                 </div>
             </div>
 
-            <div class="container" style="margin: 10px">
+            <div class="container" style="margin: 100px">
                 <div class="w3-row w3-grayscale" id="bookContainer">
-                    <!-- Sách sẽ được chèn tự động vào đây Không chỉnh sửa  -->
+                    @if (Model.Any())
+                    {
+
+                        @foreach (var item in Model)
+                        {
+                            <!-- Hiển thị sản phẩm, sách sẽ được chèn tự động vào đây -->
+                            <div class="w3-col l3 s6">
+                                <div class="w3-container">
+                                    <div class="w3-display-container">
+                                        <img src="~/Picture/@item.Image" alt="@item.Name" style="width:100%">
+                                        <span class="w3-tag w3-display-topleft">@item.Status</span>
+                                        <div class="w3-display-middle w3-display-hover">
+                                            <button class="add-to-cart w3-button w3-black" data-id="@item.Id">Thêm vào<i class="fa fa-shopping-cart"></i></button>
+                                        </div>
+                                    </div>
+                                    <p>@item.Name<br><b>@item.UnitPrice</b></p>
+                                </div>
+                            </div>
+                        }
+
+                    }
+                    else
+                    {
+                        <p>Không có sản phẩm nào thuộc danh mục này.</p>
+                    }
                 </div>
             </div>
 
@@ -151,22 +171,7 @@
             { image: "/picture/noigioivangoaigioi.jpg", name: "Nội giới và ngoại giới", price: "30.000VNĐ", tag: "Sale", id: 8 },
         ];
 
-        //sản phẩm
-        const bookContainer = document.getElementById('bookContainer');
-        bookContainer.innerHTML = books.map(book => `
-                                    <div class="w3-col l3 s6">
-                                        <div class="w3-container">
-                                            <div class="w3-display-container">
-                                                <img src="${book.image}" alt="${book.name}" style="width:100%">
-                                                <span class="w3-tag w3-display-topleft">${book.tag}</span>
-                                                <div class="w3-display-middle w3-display-hover">
-                                                    <button class="add-to-cart w3-button w3-black" data-id="${book.id}">Thêm vào<i class="fa fa-shopping-cart"></i></button>
-                                                </div>
-                                            </div>
-                                            <p>${book.name}<br><b>${book.price}</b></p>
-                                        </div>
-                                    </div>
-                                `).join('');
+        
 
         // tags phổ biến
         const tags = ["KHOA HỌC VIỄN TƯỞNG", "New York", "Tiểu thuyết", "ANIME", "Manhwa", "CONAN", "MANGA", "Baby", "HARRY POTTER", "News", "Clothing", "Bí quyết của người giàu", "Sports", "Games"];

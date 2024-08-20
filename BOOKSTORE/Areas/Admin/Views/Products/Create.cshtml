@@ -5,7 +5,48 @@
     ViewData["Title"] = "Create Product";
     Layout = null;
 }
+<style>
+    .button {
+        background: #333;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        margin: 20px;
+    }
 
+    .col-md-4 {
+        width: 1000px; /* Adjust width as needed */
+        overflow-y: auto; /* Enable vertical scrolling */
+        max-height: calc(100vh - 100px);
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom:   15px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="file"],
+    input[type="date"] {
+        width: 100%;
+        padding:   8px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+</style>
 <h1>Thêm sản phẩm</h1>
 
 
@@ -72,14 +113,14 @@
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Thêm" class="btn btn-primary" />
+                <input type="submit" value="Thêm" class="btn btn-primary button" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Quay lại</a>
+    <a asp-action="Index" class="button">Quay lại</a>
 </div>
 @section Scripts{
     @{

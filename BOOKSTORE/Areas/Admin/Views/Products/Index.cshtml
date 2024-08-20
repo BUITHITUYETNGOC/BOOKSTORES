@@ -29,10 +29,21 @@
         background: #333;
         color: #fff;
     }
+
+    .button {
+        background: #333;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        margin: 20px;
+    }
     
 </style>
 <p>
-    <a  asp-action="Create" >Thêm mới</a>
+    <a  asp-action="Create" class="button" >Thêm mới</a>
 </p>
 <table class="table">
     <thead>
@@ -87,9 +98,9 @@
             </td>
            
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Sửa</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Chi tiết</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Xóa</a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn-primary">Sửa</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn-warning">Chi tiết</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id"class="btn-danger">Xóa</a>
             </td>
         </tr>
 }
