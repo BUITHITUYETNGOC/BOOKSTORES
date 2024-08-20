@@ -32,6 +32,9 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Index">Đăng Nhập</a>
                         </li>
                     </ul>
+                    <form class="d-flex" role="search" action="/Home/Search" method="get">
+                        <input class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search" name="query">
+                    </form>
                 </div>
             </div>
         </nav>
