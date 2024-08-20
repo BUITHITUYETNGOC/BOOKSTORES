@@ -2,6 +2,7 @@
     ViewData["Title"] = "Home Page";
 }
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,14 +51,17 @@
     <!--Thể Loại-->
     <main role="main" class="pb-3">
         <div class="w3-padding-60 w3-large w3-text-grey" style="font-weight:bold; margin-top:90px">
-            <a href="#" class="w3-bar-item w3-button">Tiểu thuyết</a>
-            <a href="#" class="w3-bar-item w3-button">Truyện tranh</a>
-            <a href="#" class="w3-bar-item w3-button">Ngoại ngữ</a>
-            <a href="#" class="w3-bar-item w3-button">Nấu ăn</a>
-            <a href="#" class="w3-bar-item w3-button">Khoa học</a>
-            <a href="#" class="w3-bar-item w3-button">Thiếu nhi</a>
-            <a href="#" class="w3-bar-item w3-button">Kinh dị</a>
-            <a href="#" class="w3-bar-item w3-button">Trinh thám</a>
+            
+            @foreach (var category in Model.Categories)
+            {
+                <a href="@Url.Action("Index", new { categoryId = category.Id })" class="w3-bar-item w3-button">@category.Name</a>
+            }
+        </div>
+
+        @foreach (var product in Model.Products)
+        {
+            // Hiển thị thông tin sản phẩm
+        }
         </div>
 
 
@@ -150,19 +154,19 @@
         //sản phẩm
         const bookContainer = document.getElementById('bookContainer');
         bookContainer.innerHTML = books.map(book => `
-                            <div class="w3-col l3 s6">
-                                <div class="w3-container">
-                                    <div class="w3-display-container">
-                                        <img src="${book.image}" alt="${book.name}" style="width:100%">
-                                        <span class="w3-tag w3-display-topleft">${book.tag}</span>
-                                        <div class="w3-display-middle w3-display-hover">
-                                            <button class="add-to-cart w3-button w3-black" data-id="${book.id}">Thêm vào<i class="fa fa-shopping-cart"></i></button>
+                                    <div class="w3-col l3 s6">
+                                        <div class="w3-container">
+                                            <div class="w3-display-container">
+                                                <img src="${book.image}" alt="${book.name}" style="width:100%">
+                                                <span class="w3-tag w3-display-topleft">${book.tag}</span>
+                                                <div class="w3-display-middle w3-display-hover">
+                                                    <button class="add-to-cart w3-button w3-black" data-id="${book.id}">Thêm vào<i class="fa fa-shopping-cart"></i></button>
+                                                </div>
+                                            </div>
+                                            <p>${book.name}<br><b>${book.price}</b></p>
                                         </div>
                                     </div>
-                                    <p>${book.name}<br><b>${book.price}</b></p>
-                                </div>
-                            </div>
-                        `).join('');
+                                `).join('');
 
         // tags phổ biến
         const tags = ["KHOA HỌC VIỄN TƯỞNG", "New York", "Tiểu thuyết", "ANIME", "Manhwa", "CONAN", "MANGA", "Baby", "HARRY POTTER", "News", "Clothing", "Bí quyết của người giàu", "Sports", "Games"];
