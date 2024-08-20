@@ -11,12 +11,10 @@ namespace BOOKSTORE.Controllers
         {
             _context = context;
         }
-        //public async Task<IActionResult> Index(string Name="")
-        //{
-        //    Category category = _context.Categories.Where(c => c.Name == Name).FirstOrDefault();
-        //    if (category == null) return RedirectToAction("Index");
-        //    var productsByCategory = _context.Products.Where(p => p.CategoryId ==  category.Id);
-        //    //return View(await productsByCategory.OrderByDescending(p => p.Id).ToListAsync;
-        //}
+        public async Task<IActionResult> Index(string Name = "")
+        {
+           
+            return View();
+        }
     }
 }
