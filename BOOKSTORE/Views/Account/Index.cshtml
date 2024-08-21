@@ -3,6 +3,10 @@
     ViewData["Title"] = "Home Page";
 }
 
+<head>
+    <link rel="stylesheet" href="~/css/dangnhap.css" />
+</head>
+
 <div class="container text-center mt-5">
     <h2 class="display-4 text-primary mb-4">Chào mừng bạn đến với Bookstore</h2>
 
@@ -10,51 +14,6 @@
 
     <div class="d-flex justify-content-center">
         <a asp-controller="Account" asp-action="Login" class="btn btn-lg btn-primary mx-3 px-4 py-2 btn-hover">Đăng Nhập</a>
-        <a asp-controller="Account" asp-action="Register" class="btn btn-lg btn-outline-secondary mx-3 px-4 py-2 btn-hover">Đăng Ký</a>
+        <a asp-controller="Account" asp-action="Register" class="btn btn-lg btn-primary mx-3 px-4 py-2 btn-hover">Đăng Ký</a>
     </div>
 </div>
-
-<style>
-    body {
-        background: linear-gradient(to right, #ffffff, #007FFF);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    .container {
-        background-color: #ffffff;
-        border-radius: 15px;
-        padding: 40px 20px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        max-width: 600px;
-        margin: auto;
-    }
-
-    .btn-hover {
-        transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-
-        .btn-hover:hover {
-            transform: translateY(-3px);
-        }
-
-    .btn-primary {
-        background-color: #007bff;
-        border-color: #007bff;
-    }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
-        }
-
-    .btn-outline-secondary {
-        border-color: #6c757d;
-    }
-
-        .btn-outline-secondary:hover {
-            background-color: #6c757d;
-            color: white;
-        }
-
-    }
-</style>
