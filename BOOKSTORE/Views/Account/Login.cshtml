@@ -11,9 +11,9 @@
 
     <form asp-action="Login" method="post">
         <div class="form-group">
-            <label for="Name">Tên đăng nhập</label>
-            <input asp-for="Name" class="form-control" />
-            <span asp-validation-for="Name" class="text-danger"></span>
+            <label for="Email">Tên đăng nhập</label>
+            <input asp-for="Email" class="form-control" name="user"/>
+            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label for="Password">Mật khẩu</label>
