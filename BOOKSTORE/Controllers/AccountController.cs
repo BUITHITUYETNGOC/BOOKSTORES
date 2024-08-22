@@ -26,19 +26,20 @@ public class AccountController : Controller
     {
         if (ModelState.IsValid)
         {
-            var existingAccount = await _context.Accounts.FirstOrDefaultAsync(a => a.Name == model.Name);
+            var existingAccount = await _context.Customers.FirstOrDefaultAsync(a => a.Email == model.Email);
             if (existingAccount == null)
             {
-                var account = new Account
+                var account = new Customer
                 {
                     Id = Guid.NewGuid().ToString(),
-                    Name = model.Name
+                    Name = model.Email,
+                    Password = model.Password,
                 };
-                _context.Accounts.Add(account);
+                _context.Customers.Add(account);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Login");
             }
-            ModelState.AddModelError("", "Account already exists.");
+            ModelState.AddModelError("", "Tài Khoản Đã Tồn Tại.");
         }
         return View(model);
     }
@@ -55,7 +56,7 @@ public class AccountController : Controller
     {
         if (ModelState.IsValid)
         {
-            var account = await _context.Accounts.FirstOrDefaultAsync(a => a.Name == model.Name);
+            var account = await _context.Customers.FirstOrDefaultAsync(a => a.Email == model.Email);
             if (account != null)
             {
                 // Perform login actions

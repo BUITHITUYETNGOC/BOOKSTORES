@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations;
+ï»¿using System.ComponentModel.DataAnnotations;
 
 namespace BOOKSTORE.Models
 {
@@ -10,18 +10,21 @@ namespace BOOKSTORE.Models
     }
     public class RegisterModel
     {
-        [Required(ErrorMessage = @"Vui lòng không b? tr?ng.")]
-        public string Name { get; set; } = string.Empty;
-        [Required(ErrorMessage = @"Vui lòng không b? tr?ng.")]
+        [DataType(DataType.EmailAddress,ErrorMessage = @"Vui lÃ²ng Nháº­p Email")]
+        public string Email { get; set; } = string.Empty;
+        [DataType(DataType.Password, ErrorMessage = @"Vui lÃ²ng khÃ´ng b? tr?ng.")]
         public string Password { get; set; } = string.Empty;
+        [Compare("Password", ErrorMessage = @"Máº­t Kháº©u KhÃ´ng Khá»›p.")]
+        public string ConfirmPassword { get; set; } = string.Empty;
     }
 
     public class LoginModel
     {
-        [Required(ErrorMessage = @"Vui lòng không b? tr?ng.")]
-        public string Name { get; set; } = string.Empty;
-        [Required(ErrorMessage = @"Vui lòng không b? tr?ng.")]
+        [DataType(DataType.EmailAddress, ErrorMessage = @"Vui lÃ²ng Nháº­p Email")]
+        public string Email { get; set; } = string.Empty;
+        [DataType(DataType.Password, ErrorMessage = @"Vui lÃ²ng khÃ´ng b? tr?ng.")]
         public string Password { get; set; } = string.Empty;
+         
     }
 
 }
