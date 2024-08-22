@@ -46,5 +46,12 @@ namespace BOOKSTORE.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public async Task<IActionResult> Search(string searchTerm)
+        {
+            var products = await _context.Products.Where(p => p.Name.Contains(searchTerm) || p.Author.Contains(searchTerm)).ToListAsync();
+
+            return View(products);
+        }
     }
 }
