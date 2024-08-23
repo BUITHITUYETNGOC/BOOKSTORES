@@ -78,6 +78,24 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.button').on('click', function (event) {
+                event.preventDefault();
+                var productId = '@Model.Id';
+                var soluong = $('#soluong').val();
+
+                $.post({
+                    url: '@Url.Action("AddToCart", "Cart")',
+                    data: { productId: productId, soluong: soluong },
+                    success: function (response) {
+                        alert("Sản phẩm đã được thêm vào giỏ hàng!");
+                    }
+                });
+            });
+        });
+    </script>
 
     </main>
 

@@ -5,64 +5,112 @@
 <html lang="vi" class="h-100">
 
 <head>
-<style>
-    .button {
-        background-color: #FF7F50;
-        border: none;
-        color: white;
-        padding: 10px 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 8px;
-    }
-</style>
-</head>
-<body>
-
-@if (Model == null || !Model.Any())
-{
-    <p>Your cart is empty.</p>
-}
-else
-{
-    <table>
-        <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Unit Price</th>
-            <th>Quantity</th>
-            <th>Total</th>
-            <th> </th>
-        </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td><img src="@item.Image" width="50" /></td>
-                <td>@item.Name</td>
-                <td>@item.UnitPrice</td>
-                <td>
-                    <input type="number" value="@item.Quantity" onchange="updateCart('@item.ProductId', this.value)" />
-                </td>
-                <td>@item.Total</td>
-                <td>
-                    <a asp-action="Delete" asp-route-id="@item.ProductId" class="button" style="background-color: #dc3545; text-decoration: none;">Delete</a>
-                </td>
-            </tr>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            padding: 20px;
         }
-    </table>
 
-    <a href="@Url.Action("Checkout", "Cart")" class="button">Thanh toán</a>
-}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
 
-<script>
-    function updateCart(productId, quantity) {
-        var url = '@Url.Action("UpdateCart", "Cart")';
-        window.location.href = url + "?productId=" + productId + "&quantity=" + quantity;
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        .button {
+            background-color: #FF7F50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+            .button:hover {
+                background-color: #FF6347;
+            }
+
+        .button-delete {
+            background-color: #dc3545;
+        }
+
+            .button-delete:hover {
+                background-color: #c82333;
+            }
+
+        img {
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    @if (Model == null || !Model.Any())
+    {
+        <p>Giỏ Hàng Đang Trống</p>
     }
-</script>
+    else
+    {
+        <table>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th> </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><img src="@item.Image" width="50" /></td>
+                    <td>@item.Name</td>
+                    <td>@item.UnitPrice.ToString("C", new System.Globalization.CultureInfo("vi-VN"))</td>
+                    <td>
+                        <input type="number" value="@item.Quantity" onchange="updateCart('@item.ProductId', this.value)" min="1" style="width: 60px; padding: 5px; border-radius: 5px; border: 1px solid #ccc;" />
+                    </td>
+                    <td>@(item.UnitPrice * item.Quantity)</td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@item.ProductId" class="button button-delete" style="text-decoration: none;">Delete</a>
+                    </td>
+                </tr>
+            }
+        </table>
+
+        <a href="@Url.Action("Checkout", "Cart")" class="button">Thanh toán</a>
+    }
+
+    <script>
+        function updateCart(productId, quantity) {
+            var url = '@Url.Action("UpdateCart", "Cart")';
+            window.location.href = url + "?productId=" + productId + "&quantity=" + quantity;
+        }
+    </script>
 </body>
 </html>
