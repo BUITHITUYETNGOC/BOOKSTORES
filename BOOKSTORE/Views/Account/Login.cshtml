@@ -9,18 +9,22 @@
 <div class="container text-center mt-5">
     <h2 class="display-4 text-primary mb-4">Đăng Nhập</h2>
 
+    <!-- Validation summary for displaying errors -->
+    <div asp-validation-summary="All" class="text-danger"></div>
+
     <form asp-action="Login" method="post">
         <div class="form-group">
             <label for="Email">Tên đăng nhập</label>
-            <input asp-for="Email" class="form-control" name="user"/>
+            <input asp-for="Email" class="form-control" placeholder="Nhập Email" />
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label for="Password">Mật khẩu</label>
-            <input asp-for="Password" type="password" class="form-control" />
+            <input asp-for="Password" type="password" class="form-control" placeholder="Nhập mật khẩu" />
             <span asp-validation-for="Password" class="text-danger"></span>
         </div><br />
         <button type="submit" class="btn btn-lg btn-primary mx-3 px-4 py-2 btn-hover">Đăng Nhập</button>
         <button type="button" class="btn btn-danger btn-lg mx-3 px-4 py-2 btn-hover" onclick="history.back()">Quay lại</button>
     </form>
 </div>
+

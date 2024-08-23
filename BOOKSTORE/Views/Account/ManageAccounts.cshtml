@@ -1,0 +1,41 @@
+﻿@model IEnumerable<BOOKSTORE.Models.AccountViewModel>
+
+@{
+    ViewData["Title"] = "Quản Lý Tài Khoản";
+}
+
+<h2>Quản Lý Tài Khoản</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tên đăng nhập</th>
+            <th>Vai trò</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var account in Model)
+        {
+            <tr>
+                <td>@account.Name</td>
+                <td>@account.Role</td>
+                <td>
+                    <form asp-action="EditRole" method="post" class="d-inline">
+                        <input type="hidden" name="id" value="@account.Id" />
+                        <select name="newRole" class="form-control d-inline" style="width: auto;">
+                            <option value="User" selected="@(account.Role == "User")">User</option>
+                            <option value="Admin" selected="@(account.Role == "Admin")">Admin</option>
+                        </select>
+                        <button type="submit" class="btn btn-sm btn-primary">Sửa</button>
+                    </form>
+                    <form asp-action="DeleteAccount" method="post" class="d-inline">
+                        <input type="hidden" name="id" value="@account.Id" />
+                        <button type="submit" class="btn btn-sm btn-danger">Xoá</button>
+                    </form>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
