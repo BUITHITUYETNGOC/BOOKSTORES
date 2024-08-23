@@ -15,6 +15,7 @@ public partial class Product
     public string? Name { get; set; }
 
     [Display(Name = "Giá bán")]
+    [Range(1000, int.MaxValue, ErrorMessage = "Số lượng phải lớn hơn 1000")]
     [Required]
     public double? UnitPrice { get; set; }
 
@@ -27,6 +28,7 @@ public partial class Product
     public string? SupplierId { get; set; }
 
     [Display(Name = "Số lượng")]
+    [Range(1, int.MaxValue, ErrorMessage = "Số lượng phải lớn hơn 0")]
     [Required]
     public int? Sl { get; set; }
 

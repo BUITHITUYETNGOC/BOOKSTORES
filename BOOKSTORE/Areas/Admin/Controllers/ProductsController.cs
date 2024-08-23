@@ -70,9 +70,10 @@ namespace BOOKSTORE.Areas.Admin.Controllers
             ViewData["SupplierId"] = new SelectList(_context.Suppliers, "Id", "Id", product.SupplierId);
 
             // Kiểm tra tính hợp lệ của Model
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && product.Sl > 0 && product.UnitPrice > 1000)
             {
-                
+                ModelState.AddModelError("Sl", "Số lượng phải lớn hơn 0");
+                ModelState.AddModelError("UnitPrice", "Giá tiền không được nhỏ hơn 1000");
                 // Kiểm tra sản phẩm đã tồn tại trong database chưa
                 var Slug = await _context.Products.FirstOrDefaultAsync(p => p.Id == product.Id);
 
@@ -87,6 +88,8 @@ namespace BOOKSTORE.Areas.Admin.Controllers
                     // Nếu sản phẩm chưa tồn tại, tiếp tục xử lý
                     try
                     {
+                        // Cập nhật ngày hiện tại lưu vào db
+                        product.UpdateLast = DateTime.Now;
                         // Thêm sản phẩm mới vào database
                         _context.Add(product);
                         await _context.SaveChangesAsync();

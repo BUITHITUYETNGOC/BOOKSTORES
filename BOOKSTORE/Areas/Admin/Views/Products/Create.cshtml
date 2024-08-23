@@ -74,8 +74,8 @@
                                     <span asp-validation-for="Status" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="UpdateLast" class="control-label">Ngày thực hiện</label>
-                                    <input type="date" asp-for="UpdateLast" class="form-control" />
+                                    <label asp-for="UpdateLast" class="control-label">Ngày thực hiện: @DateTime.Now.ToString("dd/MM/yyyy")</label>
+                                   
                                     <span asp-validation-for="UpdateLast" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
