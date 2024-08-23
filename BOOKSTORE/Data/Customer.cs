@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BOOKSTORE.Migrations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -56,12 +57,10 @@ public partial class Customer
     [Display(Name = "Loại tài khoản")]
     [Required]
     public string? Account { get; set; }
-
+    
+    
     
     public string? Bill { get; set; }
-
-    [Display(Name = "")]
-    [Required]
     public string? Status { get; set; }
 
     public virtual Account? AccountNavigation { get; set; }

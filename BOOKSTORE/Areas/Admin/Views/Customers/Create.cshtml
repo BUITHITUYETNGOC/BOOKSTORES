@@ -1,0 +1,135 @@
+﻿@model BOOKSTORE.Data.Customer
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Create Customer";
+}
+<link href="~/css/sb-admin-2.min.css" rel="stylesheet" />
+<link href="~/css/sb-admin-2.css" rel="stylesheet" />
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Quản Lý Khách Hàng</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <h3 class="btn-secondary">Thêm khách hàng</h3>
+                <hr />
+                <div class="row">
+                    <div class="col-md-6">
+                        <form asp-action="Create" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <div class="form-group">
+                                <label asp-for="Id" class="control-label"></label>
+                                <input asp-for="Id" class="form-control" />
+                                <span asp-validation-for="Id" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Name" class="control-label"></label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Password" class="control-label"></label>
+                                <input asp-for="Password" class="form-control" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Image" class="control-label">Ảnh</label>
+                                <input type="file" asp-for="Image" class="form-control" />
+                                <span asp-validation-for="Image" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Gender" class="control-label"></label>
+                                <input asp-for="Gender" class="form-control" />
+                                <span asp-validation-for="Gender" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="BirthDay" class="control-label">Ngày sinh</label>
+                                <input type="date" asp-for="BirthDay" class="form-control" />
+                                <span asp-validation-for="BirthDay" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Cccd" class="control-label"></label>
+                                <input asp-for="Cccd" class="form-control" />
+                                <span asp-validation-for="Cccd" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Address" class="control-label"></label>
+                                <input asp-for="Address" class="form-control" />
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Email" class="control-label"></label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Phone" class="control-label"></label>
+                                <input asp-for="Phone" class="form-control" />
+                                <span asp-validation-for="Phone" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="StartDay" class="control-label">Ngày đăng ký</label>
+                                <input type="date" asp-for="StartDay" class="form-control" />
+                                <span asp-validation-for="StartDay" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="UpdateLast" class="control-label">Ngày thực hiện</label>
+                                <input type="date" asp-for="UpdateLast" class="form-control" />
+                                <span asp-validation-for="UpdateLast" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Account" class="control-label"></label>
+                                <select asp-for="Account" class="form-control" asp-items="ViewBag.Account">
+                                    <option>Chọn loại tài khoản</option>
+                                </select>
+                                <span asp-validation-for="Account" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Bill" class="control-label"></label>
+                                <input asp-for="Bill" class="form-control" />
+                                <span asp-validation-for="Bill" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Status" class="control-label"></label>
+                                <input asp-for="Status" class="form-control" />
+                                <span asp-validation-for="Status" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="Thêm" class="btn btn-primary button" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div>
+                    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+                </div>
+
+                @section Scripts {
+                    @{
+                        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
