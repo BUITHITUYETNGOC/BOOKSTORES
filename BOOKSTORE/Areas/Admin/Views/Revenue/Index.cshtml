@@ -1,0 +1,33 @@
+﻿@model IEnumerable<BOOKSTORE.Models.Revenue>
+
+@{
+    ViewData["Title"] = "Doanh Thu";
+}
+
+<h1>Danh sách Doanh Thu</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Total</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var revenue in Model)
+        {
+            <tr>
+                <td>@revenue.OrderId</td>
+                <td>@revenue.Total</td>
+                <td>
+                    <a href="@Url.Action("Details", "Revenue", new { id = revenue.OrderId })" class="btn btn-info">Chi Tiết</a>
+                    <form method="post" action="@Url.Action("Delete", "Revenue", new { id = revenue.OrderId })" style="display:inline;">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-danger">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
