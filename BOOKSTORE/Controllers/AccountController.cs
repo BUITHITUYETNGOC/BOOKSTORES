@@ -69,8 +69,22 @@ public class AccountController : Controller
                 // Verify the password using the hash
                 if (VerifyPassword(model.Password, account.Password))
                 {
-                    // Perform login actions
-                    return RedirectToAction("Index", "Home");
+                    // Kiểm tra vai trò của tài khoản
+                    if (account.Role == "Admin")
+                    {
+                        // Chuyển hướng đến trang Admin nếu là Admin
+                        return RedirectToAction("Index", "Admin");
+                    }
+                    else if (account.Role == "User")
+                    {
+                        // Chuyển hướng đến trang Home nếu là User
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        // Xử lý nếu vai trò không rõ ràng
+                        ModelState.AddModelError("", "Vai trò của tài khoản không hợp lệ.");
+                    }
                 }
                 else
                 {
