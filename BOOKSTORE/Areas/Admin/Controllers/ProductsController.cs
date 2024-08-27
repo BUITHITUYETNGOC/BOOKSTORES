@@ -53,7 +53,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
         public IActionResult Create()
         {
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name");
-            ViewData["SupplierId"] = new SelectList(_context.Suppliers, "Id", "Id");
+            ViewData["SupplierId"] = new SelectList(_context.Suppliers, "Id", "Name");
             return View();
         }
 
@@ -67,7 +67,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
         {
             // Load lại danh sách Category và Supplier để hiển thị trong view nếu cần nhập lại thông tin
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
-            ViewData["SupplierId"] = new SelectList(_context.Suppliers, "Id", "Id", product.SupplierId);
+            ViewData["SupplierId"] = new SelectList(_context.Suppliers, "Id", "Name", product.SupplierId);
 
             // Kiểm tra tính hợp lệ của Model
             if (ModelState.IsValid && product.Sl > 0 && product.UnitPrice > 1000)
@@ -80,7 +80,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
                 // Nếu sản phẩm đã tồn tại, thông báo lỗi
                 if (Slug != null)
                 {
-                    ModelState.AddModelError("", "Sản Phẩm Đã Có Trong Database");
+                    ModelState.AddModelError("", "Sản phẩm đã tồn tại");
                     return View(product);
                 }
                 else
@@ -129,7 +129,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
                 return NotFound();
             }
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
-            ViewData["SupplierId"] = new SelectList(_context.Suppliers, "Id", "Id", product.SupplierId);
+            ViewData["SupplierId"] = new SelectList(_context.Suppliers, "Id", "Name", product.SupplierId);
             return View(product);
         }
 
@@ -167,7 +167,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
-            ViewData["SupplierId"] = new SelectList(_context.Suppliers, "Id", "Id", product.SupplierId);
+            ViewData["SupplierId"] = new SelectList(_context.Suppliers, "Id", "Name", product.SupplierId);
             return View(product);
         }
 
