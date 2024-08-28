@@ -64,7 +64,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 // Kiểm tra nhà cung cấp đã tồn tại trong database chưa
-                var Slug = await _context.Products.FirstOrDefaultAsync(p => p.Id == supplier.Id);
+                var Slug = await _context.Suppliers.FirstOrDefaultAsync(p => p.Id == supplier.Id);
                 if (Slug != null)
                 {
                     ModelState.AddModelError("", "Nhà cung cấp đã tồn tại");

@@ -61,8 +61,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Status" class="control-label"></label>
-                                    <input asp-for="Status" class="form-control" />
-                                    <span asp-validation-for="Status" class="text-danger"></span>
+                                    <select asp-for="Status" class="form-control" asp-items="ViewBag.Status">
+                                        <option>Sale</option>
+                                        <option>Mới</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="UpdateLast" class="control-label">Ngày thực hiện: @DateTime.Now.ToString("dd/MM/yyyy")</label>
