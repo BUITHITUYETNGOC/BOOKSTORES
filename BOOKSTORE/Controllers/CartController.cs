@@ -6,21 +6,21 @@ using Newtonsoft.Json;
 
 namespace BOOKSTORE.Controllers
 {
-	public class CartController : Controller
-	{
-		
-		 private readonly QlbhContext _context;
+    public class CartController : Controller
+    {
 
-		public CartController(QlbhContext context)
-		{
-			_context = context;
-		}
+        private readonly QlbhContext _context;
 
-		public IActionResult Index()
-		{
-			var cart = GetCartItems();
-			return View(cart);
-		}
+        public CartController(QlbhContext context)
+        {
+            _context = context;
+        }
+
+        public IActionResult Index()
+        {
+            var cart = GetCartItems();
+            return View(cart);
+        }
 
         [HttpPost]
         public IActionResult AddToCart(string productId, int soluong)
@@ -56,18 +56,18 @@ namespace BOOKSTORE.Controllers
         }
 
         public IActionResult UpdateCart(string productId, int quantity)
-		{
-			var cart = GetCartItems();
-			var cartItem = cart.FirstOrDefault(c => c.ProductId == productId);
+        {
+            var cart = GetCartItems();
+            var cartItem = cart.FirstOrDefault(c => c.ProductId == productId);
 
-			if (cartItem != null && quantity > 0)
-			{
-				cartItem.Quantity = quantity;
-			}
+            if (cartItem != null && quantity > 0)
+            {
+                cartItem.Quantity = quantity;
+            }
 
-			SaveCartSession(cart);
-			return RedirectToAction("Index");
-		}
+            SaveCartSession(cart);
+            return RedirectToAction("Index");
+        }
 
         public IActionResult Checkout()
         {
@@ -121,24 +121,24 @@ namespace BOOKSTORE.Controllers
         }
 
         private List<CartItem> GetCartItems()
-		{
-			var session = HttpContext.Session.GetString("Cart");
-			if (session != null)
-			{
-				return JsonConvert.DeserializeObject<List<CartItem>>(session);
-			}
-			return new List<CartItem>();
-		}
+        {
+            var session = HttpContext.Session.GetString("Cart");
+            if (session != null)
+            {
+                return JsonConvert.DeserializeObject<List<CartItem>>(session);
+            }
+            return new List<CartItem>();
+        }
 
-		private void SaveCartSession(List<CartItem> cart)
-		{
-			var session = JsonConvert.SerializeObject(cart);
-			HttpContext.Session.SetString("Cart", session);
-		}
+        private void SaveCartSession(List<CartItem> cart)
+        {
+            var session = JsonConvert.SerializeObject(cart);
+            HttpContext.Session.SetString("Cart", session);
+        }
 
-		private void ClearCart()
-		{
-			HttpContext.Session.Remove("Cart");
-		}
-	}
+        private void ClearCart()
+        {
+            HttpContext.Session.Remove("Cart");
+        }
+    }
 }

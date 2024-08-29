@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BOOKSTORE.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class RevenueController : Controller
     {
         private readonly QlbhContext _context;
@@ -14,7 +15,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
             _context = context;
         }
         [Route("Admin/Revenue/")]
-        [Route("Admin/Revenue/index")]
+        [Route("Admin/Revenue/Index")]
         // GET: Revenue
         public async Task<IActionResult> Index()
         {
@@ -28,7 +29,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
 
             return View(revenues);
         }
-        [Route("Admin/Revenue/Details/")]
+        [Route("Admin/Revenue/Details/5")]
         // GET: Revenue/Details/5
         public async Task<IActionResult> Details(string id)
         {
@@ -48,7 +49,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
 
             return View(order);
         }
-
+        [Route("Admin/Revenue/Delete/5")]
         // POST: Revenue/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

@@ -15,7 +15,7 @@ public partial class Cart
 
     public string? Image { get; set; }
 
-    public string? Pay { get; set; }
+    public string? Total { get; set; }
 
     public DateTime? UpdateLast { get; set; }
 

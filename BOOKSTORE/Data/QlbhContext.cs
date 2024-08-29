@@ -58,7 +58,7 @@ public partial class QlbhContext : DbContext
             entity.Property(e => e.Id)
                 .HasMaxLength(50)
                 .HasColumnName("ID");
-            entity.Property(e => e.Pay).HasMaxLength(50);
+            entity.Property(e => e.Total).HasMaxLength(50);
             entity.Property(e => e.ProductsId)
                 .HasMaxLength(50)
                 .HasColumnName("ProductsID");
