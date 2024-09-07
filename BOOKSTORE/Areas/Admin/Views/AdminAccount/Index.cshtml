@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "Home Page";
+}
+<link href="~/css/sb-admin-2.min.css" rel="stylesheet" />
+<link href="~/css/sb-admin-2.css" rel="stylesheet" />
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BOOKSTORE</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BOOKSTORE.styles.css" asp-append-version="true" />
+</head>
+<head>
+    <link rel="stylesheet" href="~/css/dangnhap.css" />
+</head>
+
+<div class="container text-center mt-5">
+    <h2 class="display-4 text-primary mb-4">Chào mừng bạn đến với Bookstore</h2>
+
+    <p class="lead text-muted mb-5">Hãy đăng nhập hoặc đăng ký để khám phá thế giới sách của chúng tôi!</p>
+
+    <div class="d-flex justify-content-center">
+        <a asp-controller="Account" asp-action="Login" class="btn btn-lg btn-primary mx-3 px-4 py-2 btn-hover">Đăng Nhập</a>
+        <a asp-controller="Account" asp-action="Register" class="btn btn-lg btn-primary mx-3 px-4 py-2 btn-hover">Đăng Ký</a>
+    </div>
+</div>
