@@ -44,9 +44,7 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.Phone)
                             </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Image)
-                            </th>
+                            
                             <th></th>
                         </tr>
                     </thead>
@@ -74,9 +72,7 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Phone)
                                 </td>
-                                <td>
-                                    <img src="~/Picture/@item.Image" width="100" />
-                                </td>
+                               
                                 <td>
                                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn-primary">Sửa</a> |
                                     <a asp-action="Details" asp-route-id="@item.Id" class="btn-warning">Chi tiết</a> |

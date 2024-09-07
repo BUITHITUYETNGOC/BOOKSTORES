@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BOOKSTORE.Data;
+using Microsoft.Extensions.Hosting.Internal;
 
 namespace BOOKSTORE.Areas.Admin.Controllers
 {
@@ -13,10 +14,11 @@ namespace BOOKSTORE.Areas.Admin.Controllers
     public class IntroductionsController : Controller
     {
         private readonly QlbhContext _context;
-
-        public IntroductionsController(QlbhContext context)
+        private readonly IWebHostEnvironment _hostingEnvironment;
+        public IntroductionsController(QlbhContext context, IWebHostEnvironment hostingEnvironment)
         {
             _context = context;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         // GET: Admin/Introductions
@@ -59,13 +61,38 @@ namespace BOOKSTORE.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Admin/Introductions/Create")]
-        public async Task<IActionResult> Create([Bind("Id,FirstImage,LeftImage,Description,Address,Phone,UpdateLast")] Introduction introduction)
+        public async Task<IActionResult> Create([Bind("Id,FirstImage,LeftImage,Description,Address,Phone,UpdateLast")] Introduction introduction, IFormFile Image)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(introduction);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+            }
+            if (Image != null && Image.Length > 0)
+            {
+                // Kiểm tra định dạng file (ví dụ: chỉ cho phép jpg, png)
+                if (Image.ContentType.Contains("image/"))
+                {
+                    var uniqueFileName = Guid.NewGuid().ToString() + "_" + Image.FileName;
+                    var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "images");
+                    var filePath = Path.Combine(uploads, uniqueFileName);
+
+
+                    // Lưu file lên server
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await Image.CopyToAsync(fileStream);
+                    }
+
+                    // Lưu đường dẫn vào thuộc tính ImagePath của product
+                    introduction.FirstImage = "/images/" + uniqueFileName;
+                    introduction.LeftImage = "/images/" + uniqueFileName;
+                }
+                else
+                {
+                    ModelState.AddModelError("Image", "Chỉ chấp nhận file ảnh.");
+                }
             }
             return View(introduction);
         }

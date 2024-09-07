@@ -13,10 +13,11 @@ namespace BOOKSTORE.Areas.Admin.Controllers
     public class CustomersController : Controller
     {
         private readonly QlbhContext _context;
-
-        public CustomersController(QlbhContext context)
+        private readonly IWebHostEnvironment _hostingEnvironment;
+        public CustomersController(QlbhContext context, IWebHostEnvironment hostingEnvironment)
         {
             _context = context;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         [Route("Admin/Customers/")]
@@ -65,7 +66,7 @@ namespace BOOKSTORE.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Admin/Customers/Create")]
-        public async Task<IActionResult> Create(Customer customer)
+        public async Task<IActionResult> Create(Customer customer, IFormFile Image)
         {
             ViewData["Account"] = new SelectList(_context.Accounts, "Id", "Name", customer.Account);
 
@@ -85,6 +86,30 @@ namespace BOOKSTORE.Areas.Admin.Controllers
             else
             {
                 TempData["error"] = "Model có lỗi";
+            }
+            if (Image != null && Image.Length > 0)
+            {
+                // Kiểm tra định dạng file (ví dụ: chỉ cho phép jpg, png)
+                if (Image.ContentType.Contains("image/"))
+                {
+                    var uniqueFileName = Guid.NewGuid().ToString() + "_" + Image.FileName;
+                    var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "images");
+                    var filePath = Path.Combine(uploads, uniqueFileName);
+
+
+                    // Lưu file lên server
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await Image.CopyToAsync(fileStream);
+                    }
+
+                    // Lưu đường dẫn vào thuộc tính ImagePath của product
+                    customer.Image = "/images/" + uniqueFileName;
+                }
+                else
+                {
+                    ModelState.AddModelError("Image", "Chỉ chấp nhận file ảnh.");
+                }
             }
 
             return View(customer);
