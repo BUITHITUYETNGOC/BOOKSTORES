@@ -47,9 +47,10 @@
             <a class="w3-button w3-orange" asp-action="Index" asp-route-categoryId="TTT">Tiểu thuyết</a>
         </div>
         <img src="~/Picture/onl.png" alt="Hình ảnh" width="1280" height="200" style="display: block; margin: 20px auto;">
-
-        <div class="main" style="margin-top: 10px">
-            <div class="w3-content w3-display-container" style="max-width: 768px">
+        <!--phần thêm-->
+        <div class="main" style="margin-top: 10px; display: flex;">
+            <!-- Phần slider ở bên trái -->
+            <div class="w3-content w3-display-container" style="max-width: 768px; flex-grow: 1;">
                 <img class="mySlides" src="~/Picture/anh1.jpg" alt="Slide 1" style="width:100%">
                 <img class="mySlides" src="~/Picture/anh2.jpg" alt="Slide 2" style="width:100%">
                 <img class="mySlides" src="~/Picture/anh3.jpg" alt="Slide 3" style="width:100%">
@@ -63,6 +64,28 @@
                     <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(4)"></span>
                 </div>
             </div>
+
+
+
+            <!-- Phần hình ảnh và liên kết bên phải -->
+            <div class="right-images" style="display: flex; flex-direction: column; margin-left: 20px;">
+                <a class="w3-button w3-yellow" asp-action="Index" asp-route-categoryId="KD" style="display: inline-block; text-align: center; border-radius: 10px; border: 3px solid green;margin-bottom: 20px;">
+                    <img src="~/Picture/anh1.jpg" alt="Hình ảnh 1" style="width: 200px; margin-bottom: 10px; display: block;">
+                    <span style="display: block; font-size: 20px; font-weight: bold;">Sách mới của BOOKSTORE</span>
+                </a>
+                <a class="w3-button w3-red" asp-action="Index" asp-route-categoryId="KD" style="display: inline-block; text-align: center; border-radius: 10px; border: 3px solid green;margin-bottom: 20px;">
+                    <img src="~/Picture/anh1.jpg" alt="Hình ảnh 2" style="width: 200px; margin-bottom: 10px; display: block;">
+                    <span style="display: block; font-size: 20px; font-weight: bold;">Best seller</span>
+                </a>
+                <a class="w3-button w3-blue" asp-action="Index" asp-route-categoryId="KD" style="display: inline-block; text-align: center; border-radius: 10px; border: 3px solid green;">
+                    <img src="~/Picture/anh1.jpg" alt="Hình ảnh 3" style="width: 200px; margin-bottom: 10px; display: block;">
+                    <span style="display: block; font-size: 20px; font-weight: bold;">Giảm giá</span>
+                </a>
+            </div>
+
+
+        </div>
+        <!--kết thúc phần thêm-->
 
             <div class="container" style="margin: 100px">
                 <div class="w3-row w3-grayscale" id="bookContainer">
