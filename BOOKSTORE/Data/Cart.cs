@@ -17,7 +17,5 @@ public partial class Cart
 
     public string? Total { get; set; }
 
-    public DateTime? UpdateLast { get; set; }
-
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 }

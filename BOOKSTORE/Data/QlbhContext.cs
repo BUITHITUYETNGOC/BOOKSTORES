@@ -66,7 +66,6 @@ public partial class QlbhContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("SL");
             entity.Property(e => e.UnitPrice).HasMaxLength(50);
-            entity.Property(e => e.UpdateLast).HasColumnType("datetime");
         });
 
         modelBuilder.Entity<Category>(entity =>

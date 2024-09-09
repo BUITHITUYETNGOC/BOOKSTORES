@@ -9,21 +9,22 @@
 <h1>Chi Tiết Đơn Hàng</h1>
 
 <div>
-    <h3>Order ID: @Model.CartId</h3>
-    <h4>Order Detail:</h4>
+    <h3>Mã Hóa Đơn: @Model.CartId</h3>
+    <h4>Chi tiết đơn hàng:</h4>
     <table class="table">
         <thead>
             <tr>
                 <th>Mã sản phẩm</th>
                 <th>Số lượng</th>
                 <th>Giá sách</th>
-                <th>Tổng giá tiền</th>
+                <th>Tổng tiền</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>@Model.OrderDetail.ProductId</td>
                 <td>@Model.OrderDetail.Quantity</td>
+                <td>@Model.UnitPrice</td>
                 <td>@(Model.Quantity * Model.UnitPrice)</td>
             </tr>
         </tbody>
