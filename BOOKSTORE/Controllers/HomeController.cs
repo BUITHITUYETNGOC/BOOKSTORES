@@ -17,13 +17,17 @@ namespace BOOKSTORE.Controllers
             _context = context;
         }
 
-        public IActionResult Index(string? categoryId)
+        public IActionResult Index(string? categoryId, string? status)
         {
             var products = _context.Products.AsQueryable();
 
             if (!string.IsNullOrEmpty(categoryId))
             {
-                products = products.Where(p => p.CategoryId == categoryId);
+                products = products.Where(p => p.CategoryId == categoryId); // hiển thị theo category
+            }
+            if (!string.IsNullOrEmpty(status))
+            {
+                products = products.Where(p => p.Status == status); // hiển thị theo trạng thái
             }
 
             var productList = products.ToList(); //lấy danh sách sản phẩm
