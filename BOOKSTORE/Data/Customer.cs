@@ -20,7 +20,7 @@ public partial class Customer
     public string? Password { get; set; }
 
     [Display(Name = "Ảnh")]
-    [Required]
+   
     public string? Image { get; set; }
 
     [Display(Name = "Giới tính")]

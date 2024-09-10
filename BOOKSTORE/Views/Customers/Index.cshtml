@@ -12,9 +12,13 @@
 
 <div class="container-fluid">
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800" style="">Thông Tin Cá Nhân</h1>
+    <h1 class="h3 mb-2 text-gray-800" style="">Quản Lý Khách Hàng</h1>
 
     <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <a asp-action="Create" class="m-0 font-weight-bold text-primary"><h3>Thêm mới</h3></a>
+        </div>
 
         <div class="card-body">
             <div class="table-responsive">
@@ -40,15 +44,13 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.Phone)
                             </th>
-                            
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
                             <tr>
-                                
+
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Id)
                                 </td>
@@ -68,9 +70,9 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Phone)
                                 </td>
-                               
+
                                 <td>
-                                   
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn-primary">Sửa</a> |
                                     <a asp-action="Details" asp-route-id="@item.Id" class="btn-warning">Chi tiết</a> |
                                     <a asp-action="Delete" asp-route-id="@item.Id" class="btn-danger">Xóa</a>
                                 </td>
