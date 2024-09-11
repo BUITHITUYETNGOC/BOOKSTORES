@@ -125,6 +125,13 @@
                         <h3>TAGS PHỔ BIẾN</h3>
                         <p id="tagContainer">
                             <!-- Tags sẽ được chèn tự động vào đây không chỉnh sửa -->
+                        <a asp-action="Index" asp-route-categoryId="KD">Kinh dị</a>
+                        <a asp-action="Index" asp-route-categoryId="TT">Truyện tranh</a>
+                        <a asp-action="Index" asp-route-categoryId="TTT">Conan</a>
+                        <a asp-action="Index" asp-route-categoryId="NA">Manhua</a>
+                        <a asp-action="Index" asp-route-categoryId="NA">Manhwa</a>
+                        <a asp-action="Index" asp-route-categoryId="NA">Clothing</a>
+                        <a asp-action="Index" asp-route-categoryId="NA">Bí quyết của người giàu</a>
 
                         </p>
                     </div>
@@ -171,9 +178,9 @@
             plusDivs(1);
         }, 2000);
 
-        const tags = ["KHOA HỌC VIỄN TƯỞNG", "New York", "Tiểu thuyết", "ANIME", "Manhwa", "CONAN", "MANGA", "Baby", "HARRY POTTER", "News", "Clothing", "Bí quyết của người giàu", "Sports", "Games"];
-        const tagContainer = document.getElementById('tagContainer');
-        tagContainer.innerHTML = tags.map(tag => `<span class="w3-tag w3-grey w3-small w3-margin-bottom">${tag}</span>`).join(' ');
+        // const tags = ["KHOA HỌC VIỄN TƯỞNG", "New York", "Tiểu thuyết", "ANIME", "Manhwa", "CONAN", "MANGA", "Baby", "HARRY POTTER", "News", "Clothing", "Bí quyết của người giàu", "Sports", "Games"];
+        // const tagContainer = document.getElementById('tagContainer');
+        // tagContainer.innerHTML = tags.map(tag => `<span class="w3-tag w3-grey w3-small w3-margin-bottom">${tag}</span>`).join(' ');
 
     </script>
 </body>

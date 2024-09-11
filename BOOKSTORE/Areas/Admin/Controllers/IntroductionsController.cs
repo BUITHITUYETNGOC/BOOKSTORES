@@ -65,6 +65,8 @@ namespace BOOKSTORE.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                introduction.UpdateLast = DateTime.Now;
+
                 _context.Add(introduction);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

@@ -11,15 +11,15 @@ public partial class Introduction
     public string Id { get; set; } = null!;
 
     [Display(Name = "Ảnh bìa đầu trang")]
-    [Required]
+    
     public string? FirstImage { get; set; }
 
     [Display(Name = "Ảnh trái")]
-    [Required]
+    
     public string? LeftImage { get; set; }
 
     [Display(Name = "Mô tả")]
-    [Required]
+    
     public string? Description { get; set; }
 
     [Display(Name = "Địa chỉ liên hệ")]

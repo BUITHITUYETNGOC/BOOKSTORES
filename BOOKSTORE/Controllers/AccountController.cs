@@ -42,7 +42,7 @@ public class AccountController : Controller
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Login");
             }
-            ModelState.AddModelError("", "Tài Khoản Đã Tồn Tại.");
+            ModelState.AddModelError("", "⚠️ Tài Khoản Đã Tồn Tại");
         }
         return View(model);
     }
@@ -83,17 +83,17 @@ public class AccountController : Controller
                     else
                     {
                         // Xử lý nếu vai trò không rõ ràng
-                        ModelState.AddModelError("", "Vai trò của tài khoản không hợp lệ.");
+                        ModelState.AddModelError("", "⚠️ Vai trò của tài khoản không hợp lệ");
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Mật khẩu không đúng.");
+                    ModelState.AddModelError("", "⚠️ Mật khẩu không đúng");
                 }
             }
             else
             {
-                ModelState.AddModelError("", "Tài khoản không tồn tại.");
+                ModelState.AddModelError("", "⚠️ Tài khoản không tồn tại");
             }
         }
         return View(model);
