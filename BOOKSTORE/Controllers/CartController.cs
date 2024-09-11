@@ -26,6 +26,12 @@ namespace BOOKSTORE.Controllers
         [HttpPost]
         public IActionResult AddToCart(string productId, int soluong)
         {
+            if (soluong < 1)
+            {
+                // Return a bad request or custom error message for invalid quantity
+                return Json(new { success = false, message = "Bạn chưa có số lượng sách" });
+            }
+
             var product = _context.Products.Find(productId);
 
             if (product == null)
@@ -53,7 +59,7 @@ namespace BOOKSTORE.Controllers
             }
 
             SaveCartSession(cart);
-            return RedirectToAction("Index");
+            return Json(new { success = true });
         }
 
         public IActionResult UpdateCart(string productId, int quantity)

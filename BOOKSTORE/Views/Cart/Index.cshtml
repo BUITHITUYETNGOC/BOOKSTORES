@@ -109,6 +109,35 @@
         }
     </div>
 
+    <script>
+        function addToCart(productId) {
+            var quantityInput = document.querySelector(`#quantity-${productId}`);
+            var soluong = parseInt(quantityInput.value);
+
+            if (soluong < 1) {
+                alert("Bạn chưa có số lượng sách"); // Simple alert, replace with a pop-up modal if needed
+                return;
+            }
+
+            $.ajax({
+                url: '@Url.Action("AddToCart", "Cart")',
+                type: 'POST',
+                data: { productId: productId, soluong: soluong },
+                success: function (response) {
+                    if (response.success) {
+                        // Handle success (e.g., update cart UI, display toast)
+                        alert("Sản phẩm đã được thêm vào giỏ hàng");
+                    } else {
+                        alert(response.message); // Display the custom error message
+                    }
+                },
+                error: function () {
+                    alert("Có lỗi xảy ra khi thêm vào giỏ hàng.");
+                }
+            });
+        }
+    </script>
+
     <!-- Modal Xác Nhận Thanh Toán -->
     <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
         <div class="modal-dialog">
