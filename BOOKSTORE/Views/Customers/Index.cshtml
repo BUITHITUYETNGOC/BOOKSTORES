@@ -14,14 +14,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="~/css/sb-admin-2.min.css" rel="stylesheet" />
     <link href="~/css/sb-admin-2.css" rel="stylesheet" />
-    <style>
-        /* Thêm các định dạng CSS của bạn nếu cần */
-    </style>
 </head>
 <body>
     <div class="container-fluid">
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Thông Tin Khách Hàng</h1>
+        <h1 class="h3 mb-2 text-gray-800">Thông Tin </h1>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
@@ -35,7 +32,7 @@
                 <div class="table-responsive">
                     @if (Model != null && Model.Any())
                     {
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="border: 2px solid black; font-weight: bold;">
                             <thead>
                                 <tr>
                                     <th>@Html.DisplayNameFor(model => model.Id)</th>
@@ -63,6 +60,7 @@
                                 }
                             </tbody>
                         </table>
+
                     }
                     else
                     {
