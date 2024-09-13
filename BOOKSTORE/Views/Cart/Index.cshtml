@@ -147,7 +147,7 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td><img src="@item.Image" width="50" /></td>
+                        <td><img src="~/Picture/@item.Image" width="60" /></td>
                         <td>@item.Name</td>
                         <td>@item.UnitPrice.ToString("C", new System.Globalization.CultureInfo("vi-VN"))</td>
                         <td>
@@ -253,8 +253,7 @@
 
             // Điền chi tiết giỏ hàng vào modal
             var cartDetails = cartItems.map(item => `
-                                        <tr>
-                                            <td><img src="${item.Image}" width="50" /></td>
+                                        <tr><td><img src="/Picture/${item.Image}" width="60" /></td>
                                             <td>${item.Name}</td>
                                             <td>${item.UnitPrice}</td>
                                             <td>${item.Quantity}</td>
